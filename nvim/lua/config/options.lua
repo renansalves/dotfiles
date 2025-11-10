@@ -1,3 +1,156 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+
+-- Terminal color
+vim.opt.termguicolors = true
+-- Set colorscheme
+-- vim.cmd.colorscheme('vim')
+vim.g.clipboard = 'wl-copy'
+-- Reserve a space in the gutter
+-- This will avoid an annoying layout shift in the screen
+vim.opt.signcolumn = 'yes'
+vim.api.nvim_set_hl(0, "Normal", {bg="none"})
+
+-- setting neovim
+vim.o.expandtab=true
+vim.o.tabstop = 2
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.shiftwidth=2
+vim.o.softtabstop=2
+vim.o.numberwidth=1
+vim.o.signcolumn="yes"
+vim.cmd([[highlight clear LineNr]])
+vim.cmd([[highlight clear SignColumn]])
+
+-- cd aliases
+vim.keymap.set("ca", "pd", "cd -")
+vim.keymap.set({ "n", "v" }, "J", "6j", {})
+vim.keymap.set({ "n", "v" }, "K", "6k", {})
+-- whichkey mappings
+vim.g.mapleader = " "
+vim.keymap.set("n", "<Space>", "<nop>", { silent = true, remap = true })
+vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<CR>", { desc = "split [w]indow [v]ertically" })
+vim.keymap.set("n", "<leader>ws", "<cmd>split<CR>", { desc = "[s]plit [w]indow horizontally" })
+vim.keymap.set("n", "<leader>wh", "<C-w>h")
+--vim.keymap.set("n", "O", "<cmd> lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>")
+--vim.keymap.set("n", "I", "<cmd> lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR})<CR>")
+vim.keymap.set("n", "<leader>wj", "<C-w>j")
+vim.keymap.set("n", "<leader>wk", "<C-w>k")
+vim.keymap.set("n", "<leader>wl", "<C-w>l")
+vim.keymap.set("n", "<leader>w+", "<C-w>+", { desc = "[+] focused [w]indow" })
+vim.keymap.set("n", "<leader>w-", "<C-w>-", { desc = "[-] focused [w]indow" })
+vim.keymap.set("n", "<leader>w=", "<C-w>=", { desc = "align [=]" })
+vim.keymap.set("n", "<leader>w<", "<C-w><", { desc = "[-] focused [w]indow" })
+vim.keymap.set("n", "<leader>w>", "<C-w>>", { desc = "[+] focused [w]indow" })
+vim.keymap.set("n", "<leader>nl", "<cmd>Lazy<CR>", { desc = "[n]eovim [l]azy menu" })
+vim.keymap.set("n", "<leader>nm", "<cmd>Mason<CR>", { desc = "[n]eovim [m]ason menu" })
+vim.keymap.set("n", "<leader>nc", "<cmd>checkhealth<CR>", { desc = "[n]eovim [c]heckhealth" })
+vim.keymap.set("n", "<leader>nn", "<cmd>messages<CR>", { desc = "[n]eovim [n]otification messages" })
+vim.keymap.set("n", "<A-k>", "<cmd>m .-1<cr>")
+vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>")
+--nnoremap <A-k> :m .-2<CR>==
+--inoremap <A-j> <Esc>:m .+1<CR>==gi
+--inoremap <A-k> <Esc>:m .-2<CR>==gi
+--vnoremap <A-j> :m '>+1<CR>gv=gv
+--vnoremap <A-k> :m '<-2<CR>gv=gv
+--nnoremap <A-j> :m .+1<CR>==
+
+-- making a shortcut to copy selection into main clipboard buffer
+vim.cmd('vnoremap <C-y> "+y')
+
+
+-- disabling arrow keys for visual mode
+vim.cmd("noremap <Up> <nop>")
+vim.cmd("noremap <Down> <nop>")
+vim.cmd("noremap <Left> <nop>")
+vim.cmd("noremap <Right> <nop>")
+
+--vim.cmd("autocmd CmdlineLeave : echo ''") -- to clear cmdline after command is executed
+
+-- disable the highlighting of search
+vim.cmd("nnoremap <Esc> :nohlsearch<CR>")
+
+-- WARN:
+-- disable language provider support (lua and vimscript plugins only)
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_python3_provider = 0
+
+-- Virtual text
+vim.diagnostic.config({ virtual_text = true })
+
+-- Search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
+-- Mouse
+vim.opt.mouse = "a"
+vim.opt.mousefocus = true
+
+-- tabline
+vim.opt.showtabline = 2
+
+-- global variables
+
+-- Splits
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+-- Scroll
+vim.opt.so = 999
+
+-- Shorter messages
+vim.opt.shortmess:append("c")
+
+-- disable ~ at the end of empty line
+vim.opt.fillchars = {
+  vert = "│",
+  fold = "-",
+  eob = " ", -- suppress ~ at EndOfBuffer
+  -- diff = "⣿", -- alternatives = ⣿ ░ ─ ╱
+  msgsep = "‾",
+  foldopen = "▾",
+  foldsep = "│",
+  foldclose = "▸",
+}
+
+-- setup diagnostics icons
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "",
+      [vim.diagnostic.severity.HINT] = "󰌵",
+    },
+  },
+})
+
+vim.opt.swapfile = false -- disable swapfile
+vim.opt.encoding = "utf-8"
+vim.opt.cursorline = false
+vim.opt.cursorcolumn = false
+vim.opt.fileformat = "unix"
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.wo.number = true
+vim.wo.relativenumber = true
+
+-- enables netrw (`gx`)
+vim.cmd("set nocp")
+vim.cmd("filetype plugin on")
+vim.g.netrw_browsex_viewer = "firefox"
+
+-- disabling vulnerabilities
+vim.cmd("set modelines=0")
+
+-- custom variables
+vim.g.LAST_EXECUTED_FILE = ""
+vim.g.DELETE_LAST_EXECUTED_FILE = true
+vim.g.CPP_PROJECT = false
+
+-- temp
+vim.lsp.set_log_level("debug")
