@@ -46,6 +46,10 @@ return {
 					"clangd",
 					"jdtls",
 					"marksman",
+          "tailwindcss",
+          "tsserver",
+          "jsonls",
+          "eslint"
 				},
 			})
 		end,
@@ -55,12 +59,23 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local base_on_attach = vim.lsp.config.clangd and vim.lsp.config.clangd.on_attach or function() end
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
       vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 			})
+
 			vim.lsp.config("marksman", {
 				capabilities = capabilities,
 			})
+
+      vim.lsp.config("cssls",{
+        capabilities = capabilities
+      })
+
+      vim.lsp.config("html",{
+        capabilities = capabilities
+      })
+
 			vim.lsp.config("clangd", {
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
