@@ -33,6 +33,68 @@ return {
 			-- On windows you may have to uncomment this:
 			-- detached = false,
 		}
+		dapui.setup({
+			expand_lines = true,
+			layouts = {
+				{
+					-- You can change the order of elements in the sidebar
+					elements = {
+						-- Provide IDs as strings or tables with "id" and "size" keys
+						{
+							id = "scopes",
+							size = 0.25, -- Can be float or integer > 1
+						},
+						{ id = "breakpoints", size = 0.25 },
+						{ id = "stacks", size = 0.25 },
+						{ id = "watches", size = 0.25 },
+					},
+					size = 40,
+					position = "right", -- Can be "left" or "right"
+				},
+				{
+					elements = {
+						"repl",
+						"console",
+					},
+					size = 10,
+					position = "bottom", -- Can be "bottom" or "top"
+				},
+			},
+		})
+		dapui.setup({
+			expand_lines = true,
+			layouts = {
+				{
+					-- You can change the order of elements in the sidebar
+					elements = {
+						-- Provide IDs as strings or tables with "id" and "size" keys
+						{
+							id = "scopes",
+							size = 0.25, -- Can be float or integer > 1
+						},
+						{ id = "breakpoints", size = 0.25 },
+						{ id = "stacks", size = 0.25 },
+						{ id = "watches", size = 0.25 },
+					},
+					size = 40,
+					position = "right", -- Can be "left" or "right"
+				},
+				{
+					elements = {
+						"repl",
+						"console",
+					},
+					size = 10,
+					position = "bottom", -- Can be "bottom" or "top"
+				},
+			},
+		})
+
+		dap.configurations.java = {
+				javaExec = "java",
+				request = "launch",
+				type = "java",
+		}
 		dap.configurations.cpp = {
 			{
 				name = "Launch file",
@@ -77,41 +139,7 @@ return {
 			},
 		}
 		dap.configurations.c = dap.configurations.cpp
-		dap.configurations.java = {
-			{
-				javaExec = "java",
-				request = "launch",
-				type = "java",
-			},
-		}
-		dapui.setup({
-			expand_lines = true,
-			layouts = {
-				{
-					-- You can change the order of elements in the sidebar
-					elements = {
-						-- Provide IDs as strings or tables with "id" and "size" keys
-						{
-							id = "scopes",
-							size = 0.25, -- Can be float or integer > 1
-						},
-						{ id = "breakpoints", size = 0.25 },
-						{ id = "stacks", size = 0.25 },
-						{ id = "watches", size = 0.25 },
-					},
-					size = 40,
-					position = "right", -- Can be "left" or "right"
-				},
-				{
-					elements = {
-						"repl",
-						"console",
-					},
-					size = 10,
-					position = "bottom", -- Can be "bottom" or "top"
-				},
-			},
-		})
+
 		vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "[d]ebugger toggle [b]reakpoint" })
 		vim.keymap.set("n", "<leader>dl", dap.continue, { desc = "[d]ebugger [l]aunch" })
 		vim.keymap.set("n", "<leader>dr", dap.restart, { desc = "[d]ebugger [r]estart" })
