@@ -47,6 +47,7 @@ vim.keymap.set("n", "<leader>nc", "<cmd>checkhealth<CR>", { desc = "[n]eovim [c]
 vim.keymap.set("n", "<leader>nn", "<cmd>messages<CR>", { desc = "[n]eovim [n]otification messages" })
 vim.keymap.set("n", "<A-k>", "<cmd>m .-1<cr>")
 vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>")
+vim.keymap.set("n", "<Leader>ua", "<cmd>!make ascii-dot | less -R<cr>")
 --nnoremap <A-k> :m .-2<CR>==
 --inoremap <A-j> <Esc>:m .+1<CR>==gi
 --inoremap <A-k> <Esc>:m .-2<CR>==gi
