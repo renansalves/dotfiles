@@ -154,4 +154,4 @@ vim.g.DELETE_LAST_EXECUTED_FILE = true
 vim.g.CPP_PROJECT = false
 
 -- temp
-vim.lsp.set_log_level("debug")
+--vim.lsp.set_log_level("debug")
