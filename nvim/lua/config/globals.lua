@@ -16,7 +16,7 @@ vim.o.winborder = 'rounded'
 --vim.o.list = true
 --vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.swapfile=false
---
+
 
 vim.diagnostic.config {
   update_in_insert = false,

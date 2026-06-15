@@ -1,5 +1,17 @@
 {
   "plugins": {
+    "fzf": {
+      "rev": "14e3995a06e6a92a48d982c45f48595be1199002",
+      "src": "https://github.com/junegunn/fzf"
+    },
+    "live-server.nvim": {
+      "rev": "85915d0e7dd926a54b0082aaeafc10a82bfe8288",
+      "src": "https://github.com/selimacerbas/live-server.nvim"
+    },
+    "markdown-preview.nvim": {
+      "rev": "545cf3bc6c6425b33a9b25acef54f66e4035ca0f",
+      "src": "https://github.com/selimacerbas/markdown-preview.nvim"
+    },
     "mfd.nvim": {
       "rev": "351f8070dd517659dfd5360fef872966f7cf764c",
       "src": "https://github.com/kungfusheep/mfd.nvim"
